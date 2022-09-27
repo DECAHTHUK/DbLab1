@@ -5,18 +5,24 @@ import Db.DatabaseController;
 
 import java.util.Scanner;
 
+import static Db.Action.*;
+
 public class WorkingInterfaces {
     public static void mainChooseMenu() {
         System.out.println("""
                 Hello, friend, what would you like to do today?
                 1. Create a new DataBase.
                 2. Access an existing one.
-                3. Exit.""");
+                3. Create a backup of your database.
+                4. Load a backUp of your database.
+                0. Exit.""");
         int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1 -> Db.createNewDb();
-            case 2 -> Db.accessExisting();
-            case 3 -> {
+            case 2 -> Db.accessExisting(ACCESS);
+            case 3 -> Db.accessExisting(SAVE);
+            case 4 -> Db.accessExisting(LOAD);
+            case 0 -> {
                 System.out.println("Ok...");
                 System.exit(0);
             }
@@ -25,7 +31,7 @@ public class WorkingInterfaces {
                 mainChooseMenu();
             }
         }
-        }
+    }
 
     public static void tableChoice() {
         System.out.println("""
@@ -33,18 +39,16 @@ public class WorkingInterfaces {
                 1. Students.
                 2. Variants.
                 3. Testing table.
-                4. Exit.""");
+                0. Back.""");
         int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1 -> studentsChoiceMenu();
             case 2 -> variantsChoiceMenu();
             case 3 -> testingTableChooseMenu();
-            case 4 -> mainChooseMenu();
-            default -> {
-                System.out.println("Wrong choice(CHOOSE 1 OR 2 OR 3 OR 4 IM NOT ASKING MUCH)");
-                tableChoice();
-            }
+            case 0 -> mainChooseMenu();
+            default -> System.out.println("Wrong choice(CHOOSE 1 OR 2 OR 3 OR 4 IM NOT ASKING MUCH)");
         }
+        tableChoice();
     }
 
     public static void studentsChoiceMenu() {
@@ -56,7 +60,7 @@ public class WorkingInterfaces {
                 4. Get student by id.
                 5. Get students table.
                 6. Add new students through file.
-                7. Exit.""");
+                0. Back.""");
         int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1 -> DatabaseController.addNewStudent();
@@ -65,12 +69,10 @@ public class WorkingInterfaces {
             case 4 -> DatabaseController.getStudentById();
             case 5 -> DatabaseController.printAllStudents(DatabaseController.getAllStudents());
             case 6 -> DatabaseController.addStudentsTableThroughFile();
-            case 7 -> tableChoice();
-            default -> {
-                System.out.println("Wrong number, you dumbass...");
-                studentsChoiceMenu();
-            }
+            case 0 -> tableChoice();
+            default -> System.out.println("Wrong number, you dumbass...");
         }
+        studentsChoiceMenu();
     }
 
     public static void variantsChoiceMenu() {
@@ -82,7 +84,7 @@ public class WorkingInterfaces {
                 4. Get variant by id.
                 5. Get variants table.
                 6. Add new variants through file.
-                7. Exit.""");
+                0. Back.""");
         int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1 -> DatabaseController.addNewVariant();
@@ -91,27 +93,28 @@ public class WorkingInterfaces {
             case 4 -> DatabaseController.getVariantById();
             case 5 -> DatabaseController.printAllVariants(DatabaseController.getAllVariants());
             case 6 -> DatabaseController.addVariantsTableThroughFile();
-            case 7 -> tableChoice();
-            default -> {
-                System.out.println("Wrong number, you dumbass...");
-                variantsChoiceMenu();
-            }
+            case 0 -> tableChoice();
+            default -> System.out.println("Wrong number, you dumbass...");
         }
+        variantsChoiceMenu();
     }
 
     public static void testingTableChooseMenu() {
         System.out.println("""
                 Choose action:
                 1. Generate testing Table.
-                2. Exit.""");
+                2. Print testing table.
+                3. Back.""");
         int choice = new Scanner(System.in).nextInt();
         switch (choice) {
             case 1 -> DatabaseController.generateTestingTable();
-            case 2 -> tableChoice();
+            case 2 -> DatabaseController.getTestingTable();
+            case 3 -> tableChoice();
             default -> {
                 System.out.println("Wrong number, you dumbass...");
                 variantsChoiceMenu();
             }
         }
+        testingTableChooseMenu();
     }
 }

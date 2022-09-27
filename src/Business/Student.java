@@ -14,7 +14,7 @@ public class Student {
     }
 
     public String getFullName() {
-        return surname + " " + name + " " + patronymic;
+        return (surname + " " + name + " " + patronymic);
     }
 
     public int getId() {
