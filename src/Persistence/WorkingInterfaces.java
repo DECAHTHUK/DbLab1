@@ -10,6 +10,7 @@ import static Db.Action.*;
 public class WorkingInterfaces {
     public static void mainChooseMenu() {
         System.out.println("""
+                
                 Hello, friend, what would you like to do today?
                 1. Create a new DataBase.
                 2. Access an existing one.
@@ -35,6 +36,7 @@ public class WorkingInterfaces {
 
     public static void tableChoice() {
         System.out.println("""
+                
                 Choose table you'd like to do sth with:
                 1. Students.
                 2. Variants.
@@ -53,6 +55,7 @@ public class WorkingInterfaces {
 
     public static void studentsChoiceMenu() {
         System.out.println("""
+                
                 Choose action:
                 1. Add new student.
                 2. Alter existing student by id.
@@ -77,6 +80,7 @@ public class WorkingInterfaces {
 
     public static void variantsChoiceMenu() {
         System.out.println("""
+                
                 Choose action:
                 1. Add new variant.
                 2. Alter existing variant by id.
@@ -101,6 +105,7 @@ public class WorkingInterfaces {
 
     public static void testingTableChooseMenu() {
         System.out.println("""
+                
                 Choose action:
                 1. Generate testing Table.
                 2. Print testing table.

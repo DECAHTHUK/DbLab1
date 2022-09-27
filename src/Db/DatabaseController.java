@@ -32,7 +32,10 @@ public class DatabaseController {
         ArrayList<Student> students = getAllStudents();
         ArrayList<Variant> variants = getAllVariants();
         Random random = new Random();
-
+        if (students.size() == 0 || variants.size() == 0) {
+            System.out.println("Some of the necessary tables is empty...");
+            WorkingInterfaces.tableChoice();
+        }
         try (FileWriter writer = new FileWriter(testingTable)) {
             for (Student st : students) {
                 int varId = random.nextInt(variants.size());
@@ -48,6 +51,11 @@ public class DatabaseController {
     public static void getTestingTable() {
         ArrayList<Student> students = getAllStudents();
         ArrayList<Variant> variants = getAllVariants();
+
+        if (students.size() == 0 || variants.size() == 0) {
+            System.out.println("Some of the necessary tables is empty...");
+            WorkingInterfaces.tableChoice();
+        }
 
         try (Scanner scanner = new Scanner(testingTable)) {
             System.out.println("--------------------------------------------------------------------------------------------");

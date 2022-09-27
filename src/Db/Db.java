@@ -55,11 +55,13 @@ public class Db {
             System.out.println("You don't have any dbs yet.");
             WorkingInterfaces.mainChooseMenu();
         }
-        System.out.println("Choose the database:");
         int cnt = 1;
+        System.out.println("--------------------------------------------------------------------------------------------");
         for (File a : directories) {
             System.out.println(cnt++ + ". " + a.getName());
         }
+        System.out.println("--------------------------------------------------------------------------------------------");
+        System.out.println("Choose the database:");
         int number = new Scanner(System.in).nextInt();
         if (number < 1 || number > directories.length) {
             System.out.println("Wrong number, cringe...");
@@ -107,9 +109,11 @@ public class Db {
                 WorkingInterfaces.mainChooseMenu();
             }
             int cnt = 1;
+            System.out.println("--------------------------------------------------------------------------------------------");
             for (File a : directories) {
                 System.out.println(cnt++ + ". " + a.getName());
             }
+            System.out.println("--------------------------------------------------------------------------------------------");
             System.out.println("Choose the backup:");
 
             int number = new Scanner(System.in).nextInt();
